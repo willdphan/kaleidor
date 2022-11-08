@@ -22,7 +22,7 @@ const Home: FC = () => {
 					</div>
 					<div className="flex items-center content-center justify-center italic">
 						<a
-							href="https://twitter.com/m1guelpf"
+							href="https://eth-kingdom.vercel.app/"
 							className="text-2xl underline font-Fondamento leading-relaxed text-black tracking-widerbg-[#101827]"
 						>
 							Share with friends!
