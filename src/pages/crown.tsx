@@ -61,6 +61,7 @@ const Crown = () => {
 			console.log('Contract Balance', balance)
 		},
 	})
+
 	const { data: KingBalance } = useBalance({
 		addressOrName: king,
 		formatUnits: 'ether',
@@ -139,7 +140,7 @@ const Crown = () => {
 				</div>
 				<div className="text-center space-y-4 mb-8">
 					<p className="text-4xl mt-[1em]">King Balance</p>
-					<p className="text-2xl">{balance?.formatted} ETH</p>
+					<p className="text-2xl">{KingBalance?.formatted} ETH</p>
 				</div>
 
 				<div className="text-center space-y-8">
@@ -157,6 +158,7 @@ const Crown = () => {
 							Claim Throne
 						</button>
 					</form>
+
 					<button
 						className="border-2 border-black px-2 py-2 rounded-md bg-white text-2xl"
 						onClick={() => withdrawThrone?.()}
