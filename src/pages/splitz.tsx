@@ -1,23 +1,11 @@
 import React from 'react'
 // import Header from '@/components/Header'
 import Image from 'next/image'
-import Splitz from 'public/images/Splitz.png'
 import ConnectWallet from '@/components/ConnectWallet'
 import Link from 'next/link'
-import Modal from '@/components/QuestionsModal'
-import Arrow from 'public/images/Arrow.png'
+import Modal from '@/components/Modals_Buttons/QuestionsModal'
+import Arrow from 'images/Arrow.png'
 import Addresses from '@/components/AddressList/Addresses'
-// import {
-// 	useAccount,
-// 	useProvider,
-// 	useSigner,
-// 	useContractRead,
-// 	useBalance,
-// 	useContractWrite,
-// 	usePrepareContractWrite,
-// } from 'wagmi'
-// import splitz from 'src/pages/splits.json'
-// import { ethers } from 'ethers'
 
 const Split = () => {
 	// const url = process.env.PUBLIC_API_LINK
@@ -49,19 +37,16 @@ const Split = () => {
 				<div className="flex items-center justify-center space-x-[12em] ">
 					<div className="">
 						<div className="mt-[-3rem] py-4 ">
-							<section className="pt-10">
-								<p className="font-Roboto font-normal pb-5 text-[#08F294] ">OWNER</p>
-								<input type="text" className="border-2 w-96 mb-5 h-9" placeholder="Owner's Address" />
-							</section>
+							<section className="pt-10"><Link href="/pay">
+								<button className="bg-black text-[#08F294] border-2 border-[#08F294] px-[8.3rem] py-1 font-Roboto font-normal mb-5 ">
+									CREATE SPLIT
+								</button>
+							</Link></section>
 							<section className="">
 								<p className="font-Roboto font-normal pb-5 text-[#08F294]">RECIPIENTS</p>
 								<Addresses />
 							</section>
-							<Link href="/pay">
-								<button className="bg-black text-[#08F294] border-2 border-[#08F294] px-[8.3rem] py-1 font-Roboto font-normal mb-5 ">
-									CREATE SPLIT
-								</button>
-							</Link>
+							
 						</div>
 					</div>
 				</div>
