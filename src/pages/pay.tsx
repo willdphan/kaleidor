@@ -16,8 +16,7 @@ import { useBalance } from 'wagmi'
 
 const Pay = () => {
 	const [hydrated, setHydrated] = useState(false)
-	const [balanceAvailable, setBalanceAvailable] = React.useState<any>()
-	const [TotalCount, setTotalCount] = React.useState<any>()
+	const [count, setCount] = React.useState<any>()
 	const [recipients, setRecipients] = React.useState<any>()
 	const [splitOwner, setSplitOwner] = React.useState<any>()
 
@@ -25,45 +24,27 @@ const Pay = () => {
 	const { data: signer, isError, isLoading } = useSigner()
 	const { address, isConnecting, isDisconnected } = useAccount()
 
-	const ContractAddress = '0x7Dac656FA53e0863cD69BFfB9EE88E9fa45222CE'
-
-	// retrieves the current contract balance
-	const { data: balance } = useBalance({
-		addressOrName: ContractAddress,
-		onSuccess(data) {
-			console.log('Contract Balance', balance)
-		},
-	})
+	const ContractAddress = '0x16dF73ed18674Fb4FB1E9Fb9Eb7686D28D750A91'
 
 	// determines the total portion available for the connected wallet
 
 	// FIGURE THIS SHIT OUT!!!!!!!!!!!!!!!!
-	const { data: getBalanceAvailable } = useContractRead({
+	const { data: getSplitRecipients } = useContractRead({
 		address: ContractAddress,
 		abi: splitz,
-		functionName: 'balanceAvailable',
+		functionName: 'splitRecipients',
 		onSuccess(data) {
-			console.log('Balance Available', getBalanceAvailable)
-		},
-	})
-
-	// counts the amount of recipients involved involved
-	const { data: count } = useContractRead({
-		address: ContractAddress,
-		abi: splitz,
-		functionName: 'count',
-		onSuccess(data) {
-			console.log('Total Count', count)
+			console.log('Split Recipients', getSplitRecipients)
 		},
 	})
 
 	// retrives the addresses of all the recipients
-	const { data: AllRecipients } = useContractRead({
+	const { data: getSplitRecipientCount } = useContractRead({
 		address: ContractAddress,
 		abi: splitz,
-		functionName: 'Recipients',
+		functionName: 'splitRecipient',
 		onSuccess(data) {
-			console.log('Split Fund Recipients', AllRecipients)
+			console.log('Split Recipient Count', getSplitRecipientCount)
 		},
 	})
 
@@ -71,27 +52,24 @@ const Pay = () => {
 	const { data: owner } = useContractRead({
 		address: ContractAddress,
 		abi: splitz,
-		functionName: 'owner',
+		functionName: 'splitOwner',
 		onSuccess(data) {
 			console.log('Split Owner', owner)
 		},
 	})
 
 	useEffect(() => {
-		if (count) {
-			setTotalCount(count.toString())
+		if (getSplitRecipientCount) {
+			setCount(getSplitRecipientCount.toString())
 		}
-		if (getBalanceAvailable) {
-			setBalanceAvailable(getBalanceAvailable.toString())
-		}
-		if (AllRecipients) {
+		if (getSplitRecipients) {
 			// set to string to separate addresses with commas
-			setRecipients(AllRecipients.toString())
+			setRecipients(getSplitRecipients.toString())
 		}
 		if (owner) {
 			setSplitOwner(owner)
 		}
-	}, [count, getBalanceAvailable, AllRecipients, owner])
+	}, [getSplitRecipientCount, owner, getSplitRecipients])
 
 	// Hydration Error
 	useEffect(() => {
@@ -111,7 +89,7 @@ const Pay = () => {
 					<ConnectWallet />
 				</div>
 				<section>
-					<div className="flex justify-center text-5xl pt-10 pb-2 text-[#08F294] font-Rubik leading-relaxed tracking-wider bg-black">
+					<div className="flex justify-center text-5xl pt-44 pb-2 text-[#08F294] font-Rubik leading-relaxed tracking-wider bg-black">
 						<Link href="/">SPLITZ</Link>
 					</div>
 					<div className="flex justify-center ">
@@ -134,28 +112,12 @@ const Pay = () => {
 								<SendModal />
 							</div>
 
-							<div className="flex justify-center space-x-5 mt-[-5rem]">
-								<div className="flex items-center justify-center py-12 ">
-									{/* WITHDRAW ALL */}
-									<WithdrawAllModal />
-								</div>
-
-								<div className="flex items-center justify-center py-12">
-									{/* WITHDRAW PORTION */}
-									<WithdrawPortionModal />
-								</div>
-							</div>
-
 							<div className="flex items-center justify-center text-center px-5 py-5 border-[.05em] border-[#08F294] ">
 								<section className="space-y-5">
-									<p className="font-Roboto font-normal  text-[#08F294]">TOTAL ETH RECEIVED</p>
-									<p className="font-Roboto font-normal  text-[#42805F] ">{balance?.formatted} ETH</p>
-									<p className="font-Roboto font-normal  text-[#08F294]">TOTAL AVAILABLE</p>
-									<p className="font-Roboto font-normal  text-[#42805F] ">{balanceAvailable}</p>
-									<p className="font-Roboto font-normal  text-[#08F294]">RECIPIENTS ({TotalCount})</p>
-									<p className="font-Roboto font-normal  text-[#42805F] max-w-sm flow-text break-words">
-										{recipients}
-									</p>
+									<p className="font-Roboto font-normal  text-[#08F294]">RECIPIENTS</p>
+									<p className="font-Roboto font-normal  text-[#42805F] ">{recipients}</p>
+									<p className="font-Roboto font-normal  text-[#08F294]">COUNT</p>
+									<p className="font-Roboto font-normal  text-[#42805F] ">{count}</p>
 								</section>
 							</div>
 						</div>

@@ -21,6 +21,6 @@
 			"@images/*": ["public/images/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/crown.tss"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/crown.tss", "src/components/AddressList/Addresses.tsx"],
 	"exclude": ["node_modules"]
 }

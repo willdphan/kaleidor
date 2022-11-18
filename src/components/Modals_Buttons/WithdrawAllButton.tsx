@@ -6,7 +6,7 @@ import React from 'react'
 export default function WithdrawAllButton() {
 	const [showModal, setShowModal] = useState(false)
 
-	const ContractAddress = '0x7Dac656FA53e0863cD69BFfB9EE88E9fa45222CE'
+	const ContractAddress = '0x98883F4062a929cbDAf1939C41c4160fB86Af62F'
 
 	// withdraws all of potion available to connected wallet
 	const { write: withdrawAll } = useContractWrite({

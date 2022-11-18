@@ -7,7 +7,7 @@ export default function WithdrawPortionModal() {
 	const [showModal, setShowModal] = useState(false)
 	const [value, setValue] = React.useState<any>('')
 
-	const ContractAddress = '0x7Dac656FA53e0863cD69BFfB9EE88E9fa45222CE'
+	const ContractAddress = '0x98883F4062a929cbDAf1939C41c4160fB86Af62F'
 
 	// withdraws amount determined by user of total available
 	const { write: withdrawPortion } = useContractWrite({

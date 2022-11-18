@@ -37,16 +37,9 @@ const Split = () => {
 				<div className="flex items-center justify-center space-x-[12em] ">
 					<div className="">
 						<div className="mt-[-3rem] py-4 ">
-							<section className="pt-10"><Link href="/pay">
-								<button className="bg-black text-[#08F294] border-2 border-[#08F294] px-[8.3rem] py-1 font-Roboto font-normal mb-5 ">
-									CREATE SPLIT
-								</button>
-							</Link></section>
 							<section className="">
-								<p className="font-Roboto font-normal pb-5 text-[#08F294]">RECIPIENTS</p>
 								<Addresses />
 							</section>
-							
 						</div>
 					</div>
 				</div>

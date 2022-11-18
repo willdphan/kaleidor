@@ -1,34 +1,70 @@
 [
 	{
-		"inputs": [],
-		"stateMutability": "payable",
-		"type": "constructor"
-	},
-	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "recipient",
+				"internalType": "address payable",
+				"name": "newRecipient",
 				"type": "address"
 			}
 		],
-		"name": "AddRecipient",
+		"name": "addRecipient",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "Recipients",
-		"outputs": [
+		"inputs": [
 			{
-				"internalType": "address[]",
-				"name": "",
+				"internalType": "address payable",
+				"name": "_owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address payable[]",
+				"name": "newRecipients",
 				"type": "address[]"
 			}
 		],
-		"stateMutability": "view",
+		"name": "createSplit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "removeRecipient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferReceived",
+		"type": "event"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
 	},
 	{
 		"inputs": [
@@ -38,20 +74,7 @@
 				"type": "address"
 			}
 		],
-		"name": "amountsWithdrew",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "balanceAvailable",
+		"name": "addressToUint",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -65,38 +88,12 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "between",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "count",
-		"outputs": [
-			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
+		"name": "recipients",
 		"outputs": [
 			{
 				"internalType": "address payable",
@@ -108,17 +105,11 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "splitRecipients",
+		"inputs": [],
+		"name": "splitOwner",
 		"outputs": [
 			{
-				"internalType": "address",
+				"internalType": "address payable",
 				"name": "",
 				"type": "address"
 			}
@@ -128,7 +119,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "totalInput",
+		"name": "splitRecipientCount",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -141,26 +132,15 @@
 	},
 	{
 		"inputs": [],
-		"name": "withdrawAll",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
+		"name": "splitRecipients",
+		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
+				"internalType": "address payable[]",
+				"name": "",
+				"type": "address[]"
 			}
 		],
-		"name": "withdrawPortion",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
 ]
