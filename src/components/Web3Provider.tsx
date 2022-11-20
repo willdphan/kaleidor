@@ -4,6 +4,7 @@ import { createClient, WagmiConfig, configureChains, chain, defaultChains } from
 import { ConnectKitProvider, getDefaultClient } from 'connectkit'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
+import { InjectedConnector } from 'wagmi/connectors/injected'
 
 const { chains, provider } = configureChains(
 	[chain.goerli, chain.optimism, chain.mainnet],
@@ -16,7 +17,7 @@ const client = createClient(
 		appName: APP_NAME,
 		autoConnect: true,
 		provider,
-		chains,
+		connectors: [new InjectedConnector({ chains })],
 	})
 )
 

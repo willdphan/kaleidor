@@ -16,9 +16,7 @@ const Address = ({ task, deleteAddress }: Props) => {
 					onClick={() => {
 						deleteAddress(task.addressName)
 					}}
-				>
-					X
-				</button>
+				></button>
 			</div>
 		</div>
 	)

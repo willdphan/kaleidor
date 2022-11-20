@@ -6,7 +6,7 @@ export default function QuestionsModal() {
 		<>
 			<div className="flex items-center justify-center ">
 				<button
-					className="px-6 py-3 text-[#42805F] text-2xl bg-black rounded-md"
+					className="px-6 py-3 text-[#42805F] text-2xl bg-black rounded-md font-Roboto"
 					type="button"
 					onClick={() => setShowModal(true)}
 				>
@@ -17,26 +17,30 @@ export default function QuestionsModal() {
 				<>
 					<div className="fixed inset-0 z-10 overflow-y-auto">
 						<div
-							className="fixed inset-0 w-full h-full bg-black opacity-40"
+							className="fixed inset-0 w-full h-full bg-black opacity-40 "
 							onClick={() => setShowModal(false)}
 						></div>
 						<div className="flex items-center min-h-screen px-4 py-8">
 							<div className="relative w-full max-w-lg p-4 mx-auto bg-black border-2 border-[#08F294] rounded-md shadow-lg">
-								<div className="mt-3 sm:flex">
-									<div className="mt-2 mb-5 text-center ">
-										<h4 className="text-lg text-center font-medium text-[#08F294]">
+								<div className="mt-3">
+									<div className="mt-2 mb-5 flex flex-col items-center ">
+										<h4 className="text-lg text-center font-medium text-[#08F294] font-Rubik">
 											SPLITZ CAN SPLIT
 										</h4>
-										<p className="mt-2 text-[15px] leading-relaxed text-gray-500">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-											tempor incididunt ut labore et dolore magna aliqua.
+										<p className="text-[#42805F] pb-2 pt-3 text-center font-Roboto max-w-sm">
+											Easily split your funds between addresses with Splitz. Add as many addresses
+											to the split with a designated split owner. <br /> <br />
+											Press &quot;CREATE SPLIT&quot; to access the &quot;PAY RECIPIENTS&quot; page
+											and evenly &quot;SEND ETH&quot; among the assigned addresses. <br /> <br />{' '}
+											Only the owner can add or remove recipients.
 										</p>
-										<div className="flex justify-center items-center gap-2 mt-3 ">
+
+										<div className="flex flex-col justify-center items-center mt-3 ">
 											<button
-												className=" w-96 mt-2 p-2.5 text-[#08F294] outline-none border-[#08F294] border-2 focus:ring-2"
+												className="font-Roboto w-96 mt-2 p-2.5 text-[#08F294] outline-none border-[#08F294] border-2 focus:ring-2 hover:bg-[#08F294] hover:text-black hover:font-bold"
 												onClick={() => setShowModal(false)}
 											>
-												Cancel
+												CANCEL
 											</button>
 										</div>
 									</div>

@@ -5,7 +5,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				Fondamento: ['Fondamento', 'cursive'],
+				Rubik: ['Rubik', 'Sans-Serif'],
+				Roboto: ['Roboto Mono', 'monospace'],
 			},
 		},
 	},

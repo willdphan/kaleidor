@@ -8,22 +8,14 @@ import Arrow from 'images/Arrow.png'
 import Addresses from '@/components/AddressList/Addresses'
 
 const Split = () => {
-	// const url = process.env.PUBLIC_API_LINK
-	// // const provider = new ethers.providers.JsonRpcProvider(url)
-	// const provider = useProvider()
-	// const { data: signer, isError, isLoading } = useSigner()
-
-	// const abi = splitz
-	// const ContractAddress = process.env.PUBLIC_ADDRESS
-
 	return (
-		<div className="bg-black min-h-screen">
+		<div className="bg-black min-h-screen ">
 			<div>
 				<div className="absolute top-6 right-6">
 					<ConnectWallet />
 				</div>
 				<section>
-					<div className="flex justify-center text-5xl pt-28 pb-2 text-[#08F294] font-Rubik leading-relaxed tracking-wider bg-black">
+					<div className="flex justify-center text-5xl pt-44 pb-2 text-[#08F294] font-Rubik leading-relaxed tracking-wider bg-black">
 						<Link href="/">SPLITZ</Link>
 					</div>
 					<div className="flex justify-center ">

@@ -7,28 +7,26 @@ import Link from 'next/link'
 import QuestionsModal from '@/components/Modals_Buttons/QuestionsModal'
 import Arrow from 'images/Arrow.png'
 import SendModal from '@/components/Modals_Buttons/SendModal'
-import WithdrawAllModal from '@/components/Modals_Buttons/WithdrawAllButton'
-import WithdrawPortionModal from '@/components/Modals_Buttons/WithdrawPortionModal'
 import { useProvider, useSigner, useContractRead, useAccount, useContractWrite } from 'wagmi'
 import splitz from 'src/pages/splitz.json'
 import { useEffect, useState } from 'react'
 import { useBalance } from 'wagmi'
+import AddRecipientButton from '@/components/Modals_Buttons/AddRecipient'
+import RemoveRecipientButton from '@/components/Modals_Buttons/RemoveRecipient'
 
 const Pay = () => {
 	const [hydrated, setHydrated] = useState(false)
 	const [count, setCount] = React.useState<any>()
 	const [recipients, setRecipients] = React.useState<any>()
+	const [recip, setRecip] = React.useState<any>()
 	const [splitOwner, setSplitOwner] = React.useState<any>()
 
 	const provider = useProvider()
 	const { data: signer, isError, isLoading } = useSigner()
 	const { address, isConnecting, isDisconnected } = useAccount()
 
-	const ContractAddress = '0x16dF73ed18674Fb4FB1E9Fb9Eb7686D28D750A91'
+	const ContractAddress = '0xE6fe4529D3a7b676eAf0F9E5d8c7D73f1B270a0c'
 
-	// determines the total portion available for the connected wallet
-
-	// FIGURE THIS SHIT OUT!!!!!!!!!!!!!!!!
 	const { data: getSplitRecipients } = useContractRead({
 		address: ContractAddress,
 		abi: splitz,
@@ -42,7 +40,7 @@ const Pay = () => {
 	const { data: getSplitRecipientCount } = useContractRead({
 		address: ContractAddress,
 		abi: splitz,
-		functionName: 'splitRecipient',
+		functionName: 'splitRecipientCount',
 		onSuccess(data) {
 			console.log('Split Recipient Count', getSplitRecipientCount)
 		},
@@ -83,7 +81,7 @@ const Pay = () => {
 	}
 
 	return (
-		<div className="bg-black min-h-screen">
+		<div className="bg-black min-h-screen ">
 			<div>
 				<div className="absolute top-6 right-6">
 					<ConnectWallet />
@@ -98,28 +96,31 @@ const Pay = () => {
 						</a>
 					</div>
 					<QuestionsModal />
-					<div className="flex items-center justify-center  font-Rubik pb-5"></div>
 				</section>
-				<div className="flex items-center justify-center space-x-[12em] ">
-					<div>
-						<div className="">
-							<section className="mt-[0rem] text-center space-y-5 px-5 py-5 border-[.05em] border-[#08F294]">
-								<p className="font-Roboto font-normal text-[#08F294] ">OWNER</p>
-								<p className="font-Roboto font-normal text-[#42805F] ">{splitOwner}</p>
+				<div className="flex  justify-center mt-5">
+					<div className="max-w-sm">
+						<section className="space-y-5">
+							<p className="font-Rubik font-normal text-[#08F294] flex items-start">OWNER</p>
+							<p className="font-Roboto font-normal text-[#42805F] break-all items-start">{splitOwner}</p>
+						</section>
+
+						<div className="flex items-center justify-center py-4 my-2 space-x-5 ">
+							<AddRecipientButton />
+							<RemoveRecipientButton />
+						</div>
+						<div className="mb-5">
+							<SendModal />
+						</div>
+
+						<div className="flex   ">
+							<section className="space-y-5">
+								<p className="font-Rubik font-normal  text-[#08F294] flex items-start justify-start">
+									RECIPIENTS - {count}
+								</p>
+								<p className="font-Roboto font-normal text-[#42805F] break-all flex items-start">
+									{recipients}
+								</p>
 							</section>
-
-							<div className="flex items-center justify-center py-12 mb-2">
-								<SendModal />
-							</div>
-
-							<div className="flex items-center justify-center text-center px-5 py-5 border-[.05em] border-[#08F294] ">
-								<section className="space-y-5">
-									<p className="font-Roboto font-normal  text-[#08F294]">RECIPIENTS</p>
-									<p className="font-Roboto font-normal  text-[#42805F] ">{recipients}</p>
-									<p className="font-Roboto font-normal  text-[#08F294]">COUNT</p>
-									<p className="font-Roboto font-normal  text-[#42805F] ">{count}</p>
-								</section>
-							</div>
 						</div>
 					</div>
 				</div>
