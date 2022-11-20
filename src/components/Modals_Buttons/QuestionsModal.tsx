@@ -28,8 +28,8 @@ export default function QuestionsModal() {
 											SPLITZ CAN SPLIT
 										</h4>
 										<p className="text-[#42805F] pb-2 pt-3 text-center font-Roboto max-w-sm">
-											Easily split your funds between addresses with Splitz. Add as many addresses
-											to the split with a designated split owner. <br /> <br />
+											Easily split your funds between addresses with Splitz. Add an owner and as
+											many recipients you would like to a split. <br /> <br />
 											Press &quot;CREATE SPLIT&quot; to access the &quot;PAY RECIPIENTS&quot; page
 											and evenly &quot;SEND ETH&quot; among the assigned addresses. <br /> <br />{' '}
 											Only the owner can add or remove recipients.
