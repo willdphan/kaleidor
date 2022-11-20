@@ -131,7 +131,7 @@ const Addresses: FC = () => {
 							</div>
 
 							<a className="flex items-center justify-center mb-3">
-								<Image src={Arrow} alt="Arrow" width={15} height={10} />
+								<Image src={Arrow} className="animate-bounce" alt="Arrow" width={15} height={10} />
 							</a>
 
 							<div>

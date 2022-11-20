@@ -12,19 +12,19 @@ const Home: FC = () => {
 		<div>
 			<div className="flex flex-col justify-center text-center items-center pb-28 min-h-screen bg-black pt-24">
 				<h1 className="bg-black text-[#42805F] text-7xl tracking-[.3em] mb-10 pl-5 font-rubik font-semibold">
-					<a className="text-[#08F294]">S</a>PLITZ
-					<br />S<a className="text-[#08F294]">P</a>LITZ <br />
-					SP<a className="text-[#08F294]">L</a>ITZ
+					<a className="text-[#08F294] animate-flash">S</a>PLITZ
+					<br />S<a className="text-[#08F294] animate-flash">P</a>LITZ <br />
+					SP<a className="text-[#08F294] animate-flash">L</a>ITZ
 					<br />
-					SPL<a className="text-[#08F294]">I</a>TZ
+					SPL<a className="text-[#08F294] animate-flash">I</a>TZ
 					<br />
-					SPLI<a className="text-[#08F294]">T</a>Z<br />
-					SPLIT<a className="text-[#08F294]">Z</a>
+					SPLI<a className="text-[#08F294] animate-flash">T</a>Z<br />
+					SPLIT<a className="text-[#08F294] animate-flash">Z</a>
 					<br />
 				</h1>
 				<div className="flex items-center justify-center">
 					<Link href="/splitz">
-						<button className="bg-black text-[#08F294] border-2 border-[#08F294] px-5  py-2 font-normal font-Roboto ">
+						<button className="bg-black text-[#08F294] border-2 border-[#08F294] px-5  py-1 font-normal font-Roboto ">
 							ENTER APP
 						</button>
 					</Link>

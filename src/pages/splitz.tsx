@@ -15,12 +15,12 @@ const Split = () => {
 					<ConnectWallet />
 				</div>
 				<section>
-					<div className="flex justify-center text-5xl pt-44 pb-2 text-[#08F294] font-Rubik leading-relaxed tracking-wider bg-black">
+					<div className="flex justify-center text-5xl pt-44 mb-2 text-[#08F294] font-Rubik leading-relaxed tracking-wider bg-black">
 						<Link href="/">SPLITZ</Link>
 					</div>
 					<div className="flex justify-center ">
 						<a>
-							<Image src={Arrow} alt="Arrow" width={25} height={20} />
+							<Image src={Arrow} className="animate-bounce" alt="Arrow" width={25} height={20} />
 						</a>
 					</div>
 					<Modal />

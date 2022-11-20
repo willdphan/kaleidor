@@ -92,7 +92,7 @@ const Pay = () => {
 					</div>
 					<div className="flex justify-center ">
 						<a>
-							<Image src={Arrow} alt="Arrow" width={25} height={20} />
+							<Image src={Arrow} className="animate-bounce" alt="Arrow" width={25} height={20} />
 						</a>
 					</div>
 					<QuestionsModal />

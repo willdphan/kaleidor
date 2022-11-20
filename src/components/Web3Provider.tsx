@@ -26,9 +26,26 @@ const Web3Provider = ({ children }) => {
 		<WagmiConfig client={client}>
 			<ConnectKitProvider
 				customTheme={{
-					'--ck-font-family': '"Fondamento"',
+					'--ck-connectbutton-color': '#08F294',
+					'--ck-connectbutton-background': '#000000',
+					'--ck-connectbutton-box-shadow': '#000000',
+					// button text on hover
+					'--ck-connectbutton-hover-color': '#08F294',
+					// modal button text color
+					'--ck-secondary-button-color': '#08F294',
+					// modal button background color
+					'--ck-secondary-button-background': '#000000',
+					// modal background
+					'--ck-body-background': '#000000',
+					'--ck-secondary-button-box-shadow': '#42805F',
+					//font
+					'--ck-font-family': '"Roboto", "Rubik", Rubik',
+					// ETH text color
+					'--ck-body-color-muted': '#42805F',
+					// modal text color
+					'--ck-body-color': '#08F294',
 				}}
-				theme="retro"
+				theme="minimal"
 			>
 				{children}
 			</ConnectKitProvider>
