@@ -17,7 +17,7 @@ const client = createClient(
 		appName: APP_NAME,
 		autoConnect: true,
 		provider,
-		connectors: [new InjectedConnector({ chains })],
+		chains,
 	})
 )
 
