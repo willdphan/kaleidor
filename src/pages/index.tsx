@@ -83,7 +83,7 @@ const Home: FC = () => {
 
 					<div className="flex items-center justify-center">
 						<button
-							onClick={() => mintNFT?.('.001')}
+							// onClick={() => mintNFT?.('.001')}
 							className="bg-[#D9D9D9] text-black px-5 py-2 font-Roboto font-2xl font-bold z-10 tracking-normal"
 						>
 							MINT
