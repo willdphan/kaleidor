@@ -110,7 +110,7 @@ export default function MintButton() {
 										/>
 										<div className="flex flex-col justify-center items-center mt-3 ">
 											<button
-												className="font-Roboto py-2 w-full text-white outline-none border-white border-2 focus:ring-2 hover:bg-white hover:text-black  hover:font-bold"
+												className="font-Roboto py-2 w-[11.25rem] text-white outline-none border-white border-2 focus:ring-2 hover:bg-white hover:text-black  hover:font-bold"
 												onClick={() => mintShadeNFT?.()}
 											>
 												{isLoading ? 'MINTING...' : 'MINT'}
