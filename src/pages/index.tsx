@@ -14,6 +14,7 @@ import three from 'images/shadethree.svg'
 import four from 'images/shadefour.svg'
 import five from 'images/shadefive.svg'
 import { Carousel } from 'antd'
+import { useSendTransaction, usePrepareSendTransaction } from 'wagmi'
 
 const contentStyle: React.CSSProperties = {
 	height: '200px',
@@ -25,6 +26,11 @@ const contentStyle: React.CSSProperties = {
 
 const Home: FC = () => {
 	const contractAddress = '0xa7F6a46693BDAf773Bc9deBBD8d86a0A3e9B4c9C'
+
+	const { config } = usePrepareSendTransaction({
+		request: { to: contractAddress, value: (0.01 * 1e18).toString() },
+	})
+	const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction(config)
 
 	return (
 		<div className="">
