@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { APP_NAME } from '@/lib/consts'
 import ConnectWallet from '@/components/ConnectWallet'
 import { BookOpenIcon, CodeIcon, ShareIcon } from '@heroicons/react/outline'
-import Splitz from 'public/images/Splitz.png'
+import Shade from 'src/pages/Shade.json'
 import Image from 'next/image'
 // import Header from '@/components/Header'
 import Link from 'next/link'
@@ -14,7 +14,15 @@ import three from 'images/shadethree.svg'
 import four from 'images/shadefour.svg'
 import five from 'images/shadefive.svg'
 import { Carousel } from 'antd'
-import { useSendTransaction, usePrepareSendTransaction } from 'wagmi'
+import {
+	useSendTransaction,
+	usePrepareSendTransaction,
+	useContractWrite,
+	usePrepareContractWrite,
+	useAccount,
+} from 'wagmi'
+import { ethers } from 'ethers'
+import MintButton from '@/components/Modals_Buttons/MintModal'
 
 const contentStyle: React.CSSProperties = {
 	height: '200px',
@@ -24,13 +32,33 @@ const contentStyle: React.CSSProperties = {
 	background: '#232323',
 }
 
-const Home: FC = () => {
-	const contractAddress = '0xa7F6a46693BDAf773Bc9deBBD8d86a0A3e9B4c9C'
+const contractConfig = {
+	address: '0x58f7E88EaaEc1300D83E225414bd0dFff1F4A1A7',
+	Shade,
+}
 
-	const { config } = usePrepareSendTransaction({
-		request: { to: contractAddress, value: (0.01 * 1e18).toString() },
+const Home: FC = () => {
+	const { address } = useAccount()
+	const { config } = usePrepareContractWrite({
+		address: '0x58f7E88EaaEc1300D83E225414bd0dFff1F4A1A7',
+		abi: [
+			{
+				inputs: [
+					{
+						internalType: 'uint256',
+						name: 'tokenId',
+						type: 'uint256',
+					},
+				],
+				name: 'mintShadeNFT',
+				outputs: [],
+				stateMutability: 'payable',
+				type: 'function',
+			},
+		],
+		functionName: 'mintShadeNFT',
 	})
-	const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction(config)
+	const { write: mintNFT } = useContractWrite(config)
 
 	return (
 		<div className="">
@@ -82,12 +110,13 @@ const Home: FC = () => {
 					</h1>
 
 					<div className="flex items-center justify-center">
-						<button
-							// onClick={() => mintNFT?.('.001')}
+						<MintButton />
+						{/* <button
+							onClick={() => mintNFT?.()}
 							className="bg-[#D9D9D9] text-black px-5 py-2 font-Roboto font-2xl font-bold z-10 tracking-normal"
 						>
 							MINT
-						</button>
+						</button> */}
 					</div>
 				</div>
 			</div>
@@ -96,3 +125,6 @@ const Home: FC = () => {
 }
 
 export default Home
+function mintShadeNFT(arg0: { args: any[] }) {
+	throw new Error('Function not implemented.')
+}
