@@ -81,12 +81,9 @@ const Home: FC = () => {
 					<h1 className={styles.glitch}>
 						SHADE IS A GENERATIVE ON-CHAIN NFT COLLECTION. YOUR SHADE PERSONALIZED. <br /> 111 TOTAL.
 					</h1>
-
-					<div className="flex items-center justify-center flex-col">
-						<MintButton />
-						<Link className="text-xs mt-7 underline decoration-solid	" href="">
-							OpenSea Testnet
-						</Link>
+					<MintButton />
+					<div className="flex items-center justify-center flex-col z-10 underline decoration-solid mt-6 text-xs">
+						<Link href="https://testnets.opensea.io/collection/shade-ceqdc1yfty">OpenSea Testnet</Link>
 					</div>
 				</div>
 			</div>
