@@ -19,8 +19,7 @@ export default function MintButton() {
 	const [showModal, setShowModal] = useState(false)
 	const [value, setValue] = React.useState<any>('')
 
-	const ContractAddress = '0x3fE966e1C3f486B237D0DE82C55Bea0cd2E468bB'
-
+	// this method below works too!
 	// withdraws all of potion available to connected wallet
 	// const {
 	// 	data: mint,
@@ -40,7 +39,7 @@ export default function MintButton() {
 		error: prepareError,
 		isError: isPrepareError,
 	} = usePrepareContractWrite({
-		address: '0x3fE966e1C3f486B237D0DE82C55Bea0cd2E468bB',
+		address: '0x3d8edB0C7804Ad9a8d6d2B4cB9883eC5228Ec07f',
 		abi: [
 			{
 				inputs: [
@@ -70,14 +69,20 @@ export default function MintButton() {
 	}
 
 	return (
-		<>
+		<form
+			className="z-10"
+			onSubmit={e => {
+				e.preventDefault()
+				mintShadeNFT?.()
+			}}
+		>
 			<div className="flex items-center justify-center z-10 ">
 				<button
-					className="w-full py-1 border-2 border-[#08F294] bg-[#08F294] text-large text-black font-bold"
+					className="font-Roboto py-2 w-[8rem] text-white outline-none border-white border-2 focus:ring-2 hover:bg-white hover:text-black hover:font-bold"
 					type="button"
 					onClick={() => setShowModal(true)}
 				>
-					SEND ETHER
+					MINT
 				</button>
 			</div>
 			{showModal ? (
@@ -95,7 +100,7 @@ export default function MintButton() {
 											GET YOUR SHADE
 										</h4>
 										<p className="text-white pb-5 pt-3 text-center  max-w-sm font-Roboto">
-											Choose a token ID between 2 and 111. Choose another number if token ID is
+											Choose a token ID # between 2 and 111. Choose another number if token ID is
 											taken. FREE Mint (not including gas).
 										</p>
 										<input
@@ -108,10 +113,10 @@ export default function MintButton() {
 											className="border-2 mb-2 h-9 bg-[#232323]placeholder:text-[#42805F] border-white text-white  italic w-[11.25rem]"
 											placeholder=" TOKEN ID"
 										/>
-										<div className="flex flex-col justify-center items-center mt-3 ">
+										<div className="flex flex-col justify-center items-center mt-3">
 											<button
 												className="font-Roboto py-2 w-[11.25rem] text-white outline-none border-white border-2 focus:ring-2 hover:bg-white hover:text-black  hover:font-bold"
-												onClick={() => mintShadeNFT?.()}
+												// onClick={() => mintShadeNFT?.()}
 											>
 												{isLoading ? 'MINTING...' : 'MINT'}
 											</button>
@@ -125,7 +130,7 @@ export default function MintButton() {
 											)}
 											{(isPrepareError || isError) && (
 												<div className="flex flex-col text-red-600 mt-3 text-center">
-													Error: ID is already taken! <br /> Choose another ID.
+													Error: ID # is already taken! <br /> Choose another ID.
 												</div>
 											)}
 										</div>
@@ -136,6 +141,6 @@ export default function MintButton() {
 					</div>
 				</>
 			) : null}
-		</>
+		</form>
 	)
 }

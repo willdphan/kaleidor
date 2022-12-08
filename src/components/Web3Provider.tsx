@@ -26,24 +26,24 @@ const Web3Provider = ({ children }) => {
 		<WagmiConfig client={client}>
 			<ConnectKitProvider
 				customTheme={{
-					'--ck-connectbutton-color': '#08F294',
-					'--ck-connectbutton-background': '#000000',
-					'--ck-connectbutton-box-shadow': '#000000',
+					'--ck-connectbutton-color': 'white',
+					'--ck-connectbutton-background': '#232323',
+					'--ck-connectbutton-box-shadow': '#232323',
 					// button text on hover
-					'--ck-connectbutton-hover-color': '#08F294',
+					'--ck-connectbutton-hover-color': 'white',
 					// modal button text color
-					'--ck-secondary-button-color': '#08F294',
+					'--ck-secondary-button-color': '#232323',
 					// modal button background color
-					'--ck-secondary-button-background': '#000000',
+					'--ck-secondary-button-background': 'white',
 					// modal background
-					'--ck-body-background': '#000000',
-					'--ck-secondary-button-box-shadow': '#42805F',
+					'--ck-body-background': '#232323',
+					'--ck-secondary-button-box-shadow': '#232323',
 					//font
-					'--ck-font-family': '"Roboto", "Rubik", Rubik',
+					'--ck-font-family': '"Arial", "Rubik", Rubik',
 					// ETH text color
-					'--ck-body-color-muted': '#42805F',
+					'--ck-body-color-muted': 'white',
 					// modal text color
-					'--ck-body-color': '#08F294',
+					'--ck-body-color': 'white',
 				}}
 				theme="minimal"
 			>

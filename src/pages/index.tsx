@@ -32,34 +32,7 @@ const contentStyle: React.CSSProperties = {
 	background: '#232323',
 }
 
-const contractConfig = {
-	address: '0x58f7E88EaaEc1300D83E225414bd0dFff1F4A1A7',
-	Shade,
-}
-
 const Home: FC = () => {
-	const { address } = useAccount()
-	const { config } = usePrepareContractWrite({
-		address: '0x58f7E88EaaEc1300D83E225414bd0dFff1F4A1A7',
-		abi: [
-			{
-				inputs: [
-					{
-						internalType: 'uint256',
-						name: 'tokenId',
-						type: 'uint256',
-					},
-				],
-				name: 'mintShadeNFT',
-				outputs: [],
-				stateMutability: 'payable',
-				type: 'function',
-			},
-		],
-		functionName: 'mintShadeNFT',
-	})
-	const { write: mintNFT } = useContractWrite(config)
-
 	return (
 		<div className="">
 			<div className="relative min-h-screen bg-[#232323] flex items-center justify-center max-w-md sm:max-w-full text-white ">
@@ -109,14 +82,11 @@ const Home: FC = () => {
 						SHADE IS A GENERATIVE ON-CHAIN NFT COLLECTION. YOUR SHADE PERSONALIZED. <br /> 111 TOTAL.
 					</h1>
 
-					<div className="flex items-center justify-center">
+					<div className="flex items-center justify-center flex-col">
 						<MintButton />
-						{/* <button
-							onClick={() => mintNFT?.()}
-							className="bg-[#D9D9D9] text-black px-5 py-2 font-Roboto font-2xl font-bold z-10 tracking-normal"
-						>
-							MINT
-						</button> */}
+						<Link className="text-xs mt-7 underline decoration-solid	" href="">
+							OpenSea Testnet
+						</Link>
 					</div>
 				</div>
 			</div>
