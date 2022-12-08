@@ -101,7 +101,7 @@ export default function MintButton() {
 										</h4>
 										<p className="text-white pb-5 pt-3 text-center  max-w-sm font-Roboto">
 											Choose a token ID # between 2 and 111. Choose another number if token ID is
-											taken. FREE Mint (not including gas).
+											taken.
 										</p>
 										<input
 											type="number"
