@@ -1,8 +1,19 @@
 import { useState } from 'react'
-import { useProvider, useSigner, useContractRead, useAccount, useBalance, useContractWrite } from 'wagmi'
+import {
+	useProvider,
+	useSigner,
+	useContractRead,
+	useAccount,
+	useBalance,
+	useContractWrite,
+	useWaitForTransaction,
+	usePrepareContractWrite,
+} from 'wagmi'
 import Shade from 'src/pages/Shade.json'
 import React from 'react'
 import { FC, ChangeEvent } from 'react'
+import { data } from 'autoprefixer'
+import { write } from 'node:fs'
 
 export default function MintButton() {
 	const [showModal, setShowModal] = useState(false)
@@ -11,18 +22,46 @@ export default function MintButton() {
 	const ContractAddress = '0x3fE966e1C3f486B237D0DE82C55Bea0cd2E468bB'
 
 	// withdraws all of potion available to connected wallet
+	// const {
+	// 	data: mint,
+	// 	write: mintShadeNFT,
+	// 	error: prepareError,
+	// 	isError: isPrepareError,
+	// } = useContractWrite({
+	// 	mode: 'recklesslyUnprepared',
+	// 	address: ContractAddress,
+	// 	abi: Shade,
+	// 	functionName: 'mintShadeNFT',
+	// 	args: [value],
+	// })
+
 	const {
-		data: mint,
-		write: mintShadeNFT,
+		config,
 		error: prepareError,
 		isError: isPrepareError,
-	} = useContractWrite({
-		mode: 'recklesslyUnprepared',
-		address: ContractAddress,
-		abi: Shade,
+	} = usePrepareContractWrite({
+		address: '0x3fE966e1C3f486B237D0DE82C55Bea0cd2E468bB',
+		abi: [
+			{
+				inputs: [
+					{
+						internalType: 'uint256',
+						name: 'tokenId',
+						type: 'uint256',
+					},
+				],
+				name: 'mintShadeNFT',
+				outputs: [],
+				stateMutability: 'payable',
+				type: 'function',
+			},
+		],
 		functionName: 'mintShadeNFT',
 		args: [value],
 	})
+	const { data, error, isError, write: mintShadeNFT } = useContractWrite(config)
+
+	const { isLoading, isSuccess } = useWaitForTransaction({})
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
 		if (event.target.name === 'addAddress') {
@@ -45,17 +84,17 @@ export default function MintButton() {
 				<>
 					<div className="fixed inset-0 z-10 overflow-y-auto">
 						<div
-							className="fixed inset-0 w-full h-full bg-black opacity-40"
+							className="fixed inset-0 w-full h-full bg-[#232323] opacity-40"
 							onClick={() => setShowModal(false)}
 						></div>
 						<div className="flex items-center min-h-screen px-4 py-8">
-							<div className="relative w-full max-w-lg p-4 mx-auto bg-black border-2 border-[#08F294] rounded-md shadow-lg">
+							<div className="relative w-full max-w-xs p-4 mx-auto bg-[#232323] border-2 border-white rounded-md shadow-lg">
 								<div className="mt-3">
 									<div className="mt-2 mb-5 flex flex-col items-center ">
-										<h4 className="text-lg text-center font-medium text-[#08F294] font-Rubik">
+										<h4 className="text-xl text-center font-medium text-white font-Roboto">
 											GET YOUR SHADE
 										</h4>
-										<p className="text-[#42805F] pb-5 pt-3 text-center  max-w-sm font-Roboto">
+										<p className="text-white pb-5 pt-3 text-center  max-w-sm font-Roboto">
 											Choose a token ID between 2 and 111. Choose another number if token ID is
 											taken. FREE Mint (not including gas).
 										</p>
@@ -66,16 +105,29 @@ export default function MintButton() {
 											step="1"
 											min="2"
 											max="111"
-											className="border-2 mb-2 h-9 bg-black placeholder:text-[#42805F] border-[#42805F] text-[#42805F] w-full italic  max-w-sm"
+											className="border-2 mb-2 h-9 bg-[#232323]placeholder:text-[#42805F] border-white text-white  italic w-[11.25rem]"
 											placeholder=" TOKEN ID"
 										/>
-										<div className="flex justify-center items-center mt-3 ">
+										<div className="flex flex-col justify-center items-center mt-3 ">
 											<button
-												className="font-Roboto w-96 p-2.5 text-[#08F294] outline-none border-[#08F294] border-2 focus:ring-2 hover:bg-[#08F294] hover:text-black hover:font-bold"
+												className="font-Roboto py-2 w-full text-white outline-none border-white border-2 focus:ring-2 hover:bg-white hover:text-black  hover:font-bold"
 												onClick={() => mintShadeNFT?.()}
 											>
-												MINT
+												{isLoading ? 'MINTING...' : 'MINT'}
 											</button>
+											{isSuccess && (
+												<div>
+													Successfully minted your NFT!
+													<div>
+														<a href={`https://etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+													</div>
+												</div>
+											)}
+											{(isPrepareError || isError) && (
+												<div className="flex flex-col text-red-600 mt-3 text-center">
+													Error: ID is already taken! <br /> Choose another ID.
+												</div>
+											)}
 										</div>
 									</div>
 								</div>
