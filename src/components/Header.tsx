@@ -3,7 +3,7 @@ import ConnectWallet from './ConnectWallet'
 import Link from 'next/link'
 import { DisabledContextProvider } from 'antd/es/config-provider/DisabledContext'
 import Image from 'next/image'
-import logo from '/Users/williamphan/Desktop/developer/kaleidor/images/logo.png'
+import logo from 'images/logo.png'
 
 const Header: FC = () => {
 	return (
