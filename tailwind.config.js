@@ -4,11 +4,10 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				Roboto: ['Roboto Mono', 'monospace'],
-				Inter: ['Inter', 'sans-serif'],
+				Mont: ['Montserrat', 'sans-serif'],
 			},
 			animation: {
-				'spin-slow': 'spin 3s linear infinite',
+				'spin-slow': 'spin 60s linear infinite',
 			},
 		},
 	},
