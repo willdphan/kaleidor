@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { DisabledContextProvider } from 'antd/es/config-provider/DisabledContext'
 import Image from 'next/image'
 import logo from 'images/logo.png'
+//logo
 
 const Header: FC = () => {
 	return (
