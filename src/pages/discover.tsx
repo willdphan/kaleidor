@@ -20,9 +20,9 @@ const discover = () => {
 			<div>
 				<Header />
 			</div>
-			<div className="bg-black min-h-screen overflow-hidden flex items-center justify-center content-center pt-44 flex-row space-x-10">
+			<div className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 items-center justify-center content-center space-x-10 ">
 				{/* DISCOVER HERE */}
-				<section className="flex flex-col items-center justify-center">
+				<section className="flex flex-col items-center justify-center mb-28">
 					<div>
 						<Image src={particle} alt="Picture" width={200} height={180} />
 					</div>
@@ -34,9 +34,9 @@ const discover = () => {
 					<button className="w-full border-2 rounded-xl font-Mont font-bold py-3">MINT ≈ 1.23 ETH</button>
 				</section>
 				{/* GRAPHING HERE */}
-				<section className="">
+				<section className="mb-28">
 					<Image src={particle} alt="Picture" width={200} height={180} />
-					<div>Input</div>
+					<div>GRAPH HERE.</div>
 					<div>MINT</div>
 				</section>
 			</div>

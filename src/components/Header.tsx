@@ -1,50 +1,3 @@
-// import { FC } from 'react'
-// import ConnectWallet from './ConnectWallet'
-// import Link from 'next/link'
-// import { DisabledContextProvider } from 'antd/es/config-provider/DisabledContext'
-// import Image from 'next/image'
-// import headerlogo from 'images/headerlogo.png'
-// //logo
-
-// const Header: FC = () => {
-// 	return (
-// 		<header className="z-99 ">
-// 			<ul className="flex flex-row absolute top-8 left-14 space-x-28 font-Mont text-2xl font-medium bg-black">
-// 				<li className="mt-[-1.5rem]">
-// 					<a href={'/'}>
-// 						<Image src={headerlogo} alt="Picture" width={80} height={80} />
-// 					</a>
-// 				</li>
-// 				<li>
-// 					<Link href="/discover">
-// 						<a className="font-Roboto max-w-7xl ">DISCOVER</a>
-// 					</Link>
-// 				</li>
-// 				<li>
-// 					<Link href="/govern">
-// 						<a className="font-Roboto max-w-7xl ">GOVERN</a>
-// 					</Link>
-// 				</li>
-// 				<li>
-// 					<Link href="/build">
-// 						<a className="font-Roboto max-w-7xl ">BUILD</a>
-// 					</Link>
-// 				</li>
-// 				<li>
-// 					<Link href="/learn">
-// 						<a className="font-Roboto max-w-7xl ">LEARN</a>
-// 					</Link>
-// 				</li>
-// 			</ul>
-// 			<div className="absolute top-6 right-6 ">
-// 				<ConnectWallet />
-// 			</div>
-// 		</header>
-// 	)
-// }
-
-// export default Header
-
 import * as React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -61,9 +14,10 @@ import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
 import headerlogo from 'images/headerlogo.png'
 import Image from 'next/image'
+import ConnectWallet from './ConnectWallet'
+import Link from 'next/link'
 
-const pages = ['Products', 'Pricing', 'Blog']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const pages = ['DISCOVER', 'GOVERN', 'BUILD', 'LEARN']
 
 function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -85,11 +39,10 @@ function ResponsiveAppBar() {
 	}
 
 	return (
-		<AppBar position="static">
+		<AppBar position="static" className="bg-black ">
 			<Container maxWidth="xl" className="bg-black pt-3">
 				<Toolbar disableGutters>
 					{/* MD WIDTH AND ABOVE */}
-					<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 					<Typography
 						variant="h6"
 						noWrap
@@ -105,14 +58,15 @@ function ResponsiveAppBar() {
 							textDecoration: 'none',
 						}}
 					>
-						LOGO
+						<Image src={headerlogo} alt="Picture" width={90} height={80} />
 					</Typography>
 
 					{/* MD WIDTH AND BELOW */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						{/* MENU ICON */}
 						<IconButton
-							size="large"
+							className="scale-150 "
+							// size="large"
 							aria-label="account of current user"
 							aria-controls="menu-appbar"
 							aria-haspopup="true"
@@ -141,11 +95,38 @@ function ResponsiveAppBar() {
 							}}
 						>
 							{/* MENU ITEMS */}
-							{pages.map(page => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
+							<Link href={'/discover'}>
+								<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
+									DISCOVER
+								</MenuItem>
+							</Link>
+							<Link href={'/govern'}>
+								<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
+									GOVERN
+								</MenuItem>
+							</Link>
+							<Link href={'/build'}>
+								<MenuItem
+									href={'/build'}
+									className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium"
+								>
+									BUILD
+								</MenuItem>
+							</Link>
+							<Link href={'/learn'}>
+								<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
+									LEARN
+								</MenuItem>
+							</Link>
+							{/* {pages.map(page => (
+								<MenuItem
+									key={page}
+									onClick={handleCloseNavMenu}
+									className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-2xl font-medium"
+								>
 									<Typography textAlign="center">{page}</Typography>
 								</MenuItem>
-							))}
+							))} */}
 						</Menu>
 					</Box>
 					<Typography
@@ -164,49 +145,37 @@ function ResponsiveAppBar() {
 							textDecoration: 'none',
 						}}
 					>
-						<Image src={headerlogo} alt="Picture" width={90} height={80} />
+						<Image src={headerlogo} alt="Picture" width={100} height={100} />
 					</Typography>
-					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map(page => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}
-							>
-								{page}
-							</Button>
-						))}
-					</Box>
 
-					{/* <Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: '45px' }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{settings.map(setting => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu>
-					</Box> */}
+					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+						<Link href={'/discover'}>
+							<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
+								DISCOVER
+							</MenuItem>
+						</Link>
+						<Link href={'/govern'}>
+							<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
+								GOVERN
+							</MenuItem>
+						</Link>
+						<Link href={'/build'}>
+							<MenuItem
+								href={'/build'}
+								className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium"
+							>
+								BUILD
+							</MenuItem>
+						</Link>
+						<Link href={'/learn'}>
+							<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
+								LEARN
+							</MenuItem>
+						</Link>
+					</Box>
+					<div className="">
+						<ConnectWallet />
+					</div>
 				</Toolbar>
 			</Container>
 		</AppBar>
