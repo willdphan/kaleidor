@@ -20,7 +20,7 @@ const discover = () => {
 			<div>
 				<Header />
 			</div>
-			<div className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 items-center justify-center content-center space-x-10 ">
+			<div className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-0 items-center justify-center content-center space-x-10 ">
 				{/* DISCOVER HERE */}
 				<section className="flex flex-col items-center justify-center mb-28">
 					<div>
