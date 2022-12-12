@@ -58,7 +58,9 @@ function ResponsiveAppBar() {
 							textDecoration: 'none',
 						}}
 					>
-						<Image src={headerlogo} alt="Picture" width={90} height={80} />
+						<Link href={'/'}>
+							<Image src={headerlogo} alt="Picture" width={90} height={80} />
+						</Link>
 					</Typography>
 
 					{/* MD WIDTH AND BELOW */}
@@ -145,7 +147,9 @@ function ResponsiveAppBar() {
 							textDecoration: 'none',
 						}}
 					>
-						<Image src={headerlogo} alt="Picture" width={100} height={100} />
+						<Link href={'/'}>
+							<Image src={headerlogo} alt="Picture" width={100} height={100} />
+						</Link>
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
