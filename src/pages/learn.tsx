@@ -19,8 +19,8 @@ const learn = () => {
 			<div>
 				<Header />
 			</div>
-			<div className="bg-black min-h-screen overflow-hidden flex flex-col items-center justify-center content-center pt-44 space-x-10 ">
-				<section className="flex flex-col items-start max-w-xl space-y-10">
+			<div className="bg-black min-h-screen overflow-hidden flex flex-col items-center justify-center content-center pt-10 ">
+				<section className="flex flex-col items-start max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl space-y-10">
 					<h1 className="font-Mont text-4xl">
 						REFRACTORED, <br /> REFLECTED ARCHITECTURE.
 					</h1>
@@ -34,32 +34,34 @@ const learn = () => {
 						</p>
 					</div>
 					<div className="flex ">
-						<ul className="underline space-y-2 w-1/2 ">
+						<ul className="underline space-y-2 w-3/4 ">
 							<li>RENDERING CONTRACT</li>
 							<li>RENDERING CONTRACT</li>
 							<li>RENDERING CONTRACT</li>
 							<li>RENDERING CONTRACT</li>
 						</ul>
-						<div className="hidden sm:block sm:mt-[-3rem]">
-							<Image alt="image" src={particle} width={400} height={350} />
+						<div className="collapse sm:mt-[0rem]">
+							<Image alt="image" src={particle} width={300} height={250} />
 						</div>
 					</div>
 				</section>
-				<section className="bg-white py-5 px-20 my-[4rem]">
-					<ul className="flex flex-row items-center justify-center space-x-10   text-black bg-white font-Mont font-bold  ">
+				<section className="bg-white py-5 flex flex-col items-center justify-center px-20 my-[4rem]">
+					<ul className="flex flex-row items-center justify-center space-x-10 text-black bg-white font-Mont font-bold ">
 						<li>OPENSEA</li>
 						<li>TWITTER</li>
+					</ul>
+					<ul className="flex flex-row items-center justify-center space-x-10 text-black bg-white font-Mont font-bold">
 						<li>ETHERSCAN</li>
 						<li>DISCORD</li>
 					</ul>
 				</section>
-				<section className="flex flex-col items-start max-w-xl space-y-10">
+				<section className="flex flex-col items-start max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl space-y-10">
 					<h1 className="font-Mont text-4xl">
 						REFRACTORED, <br /> REFLECTED ARCHITECTURE.
 					</h1>
 
 					<div className="flex justify-between">
-						<p className="font-Mont">
+						<p className="font-Mont ">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis semper felis, a interdum
 							libero. Ut sodales, ex ut tempus lobortis, ligula urna mattis purus, et tempor sem neque at
 							quam. Vestibulum volutpat bibendum ligula sed egestas. Mauris ac urna lacinia, aliquet dui
