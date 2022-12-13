@@ -11,8 +11,8 @@ const data = {
 	datasets: [
 		{
 			label: 'My First dataset',
-			backgroundColor: 'rgb(255, 99, 132)',
-			borderColor: 'rgb(255, 99, 132)',
+			backgroundColor: '#FF00D9',
+			borderColor: '#FF00D9',
 			borderWidth: 3,
 			data: [0, 10, 5, 2, 20, 30, 45],
 		},
@@ -37,10 +37,54 @@ const options = {
 		},
 	},
 	scales: {
-		x: {
+		y: {
+			stacked: true,
 			grid: {
-				borderColor: '#1500FF',
+				display: true,
+				drawBorder: false,
+				drawOnChartArea: true,
+				// borderDashOffset: 25,
+				borderColor: '#808080',
+				borderWidth: 0.8800000000000001,
+				color: '#808080',
 			},
+			ticks: {
+				display: false,
+			},
+			// min: 0,
+			// ticks: {
+			// 	stepSize: 25,
+			// 	beginAtZero: true,
+			// },
+			// title: {
+			// 	display: false,
+			// 	text: 'Y axis title',
+			// },
+		},
+		x: {
+			// display: false,
+			stacked: true,
+			grid: {
+				display: true,
+				drawBorder: false,
+				drawOnChartArea: true,
+				// borderDashOffset: 25,
+				borderColor: '#808080',
+				borderWidth: 0.8800000000000001,
+				color: '#808080',
+			},
+			ticks: {
+				display: false,
+			},
+			// min: 0,
+			// ticks: {
+			// 	stepSize: 25,
+			// 	beginAtZero: true,
+			// },
+			// title: {
+			// 	display: false,
+			// 	text: 'Y axis title',
+			// },
 		},
 	},
 }
