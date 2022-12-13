@@ -22,12 +22,12 @@ const discover = () => {
 			</div>
 			<div className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-0 items-center justify-center content-center space-x-10 ">
 				{/* DISCOVER HERE */}
-				<section className="flex flex-col items-center justify-center mb-28">
+				<section className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 ">
 					<div>
-						<Image src={particle} alt="Picture" width={200} height={180} />
+						<Image src={particle} alt="Picture" />
 					</div>
 					<textarea
-						className=" pb-24 w-[15rem] sm:w-[15rem] text-white bg-black mt-4 border-2 placeholder:italic text-wrap mb-5 rounded-xl font-Mont"
+						className=" pb-24 w-full text-white bg-black mt-4 border-2 placeholder:italic text-wrap mb-5 rounded-xl font-Mont"
 						// value={collection}
 						placeholder="   ENTER SIGNAL..."
 					></textarea>
