@@ -21,6 +21,6 @@
 			"@images/*": ["public/images/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/crown.tss", "src/components/AddressList/Addresses.tsx"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/crown.tss", "src/components/AddressList/Addresses.tsx", "src/components/PriceChart.js", "src/pages/discover.ja"],
 	"exclude": ["node_modules"]
 }

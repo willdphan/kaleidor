@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/Header'
@@ -11,8 +11,7 @@ import {
 	useAccount,
 } from 'wagmi'
 import { ethers } from 'ethers'
-
-import React from 'react'
+import LineChart from 'src/components/Charts/LineChart.js'
 
 const discover = () => {
 	return (
@@ -20,9 +19,10 @@ const discover = () => {
 			<div>
 				<Header />
 			</div>
-			<div className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-0 items-center justify-center content-center space-x-10 ">
+			<section className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-0 items-center justify-center content-center space-x-10 ">
 				{/* DISCOVER HERE */}
-				<section className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 ">
+				{/* w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 */}
+				<div className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12">
 					<div>
 						<Image src={particle} alt="Picture" />
 					</div>
@@ -32,14 +32,11 @@ const discover = () => {
 						placeholder="   ENTER SIGNAL..."
 					></textarea>
 					<button className="w-full border-2 rounded-xl font-Mont font-bold py-3">MINT ≈ 1.23 ETH</button>
-				</section>
-				{/* GRAPHING HERE */}
-				<section className="mb-28">
-					<Image src={particle} alt="Picture" width={200} height={180} />
-					<div>GRAPH HERE.</div>
-					<div>MINT</div>
-				</section>
-			</div>
+				</div>
+				<div className="w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 xl:mt-[-5.5rem]  ">
+					<LineChart />
+				</div>
+			</section>
 		</>
 	)
 }
