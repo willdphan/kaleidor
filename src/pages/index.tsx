@@ -17,7 +17,7 @@ import RandomParticles from 'src/components/RandomParticles'
 
 const Home: FC = () => {
 	return (
-		<div className="bg-black min-h-screen overflow-hidden ">
+		<div className="bg-black max-h-screen overflow-hidden ">
 			<div className="pt-48 flex items-center justify-center content-center ">
 				<a href={'/discover'}>
 					<Image src={logo} alt="Picture" width={150} height={150} />
