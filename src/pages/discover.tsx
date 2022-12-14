@@ -15,6 +15,8 @@ import { ethers } from 'ethers'
 import LineChart from 'src/components/Charts/LineChart.js'
 import React from 'react'
 import abi from 'src/abi/particle.json'
+import ReactIs from 'react-is'
+import RandomParticles from '@/components/RandomParticles'
 
 const Discover = () => {
 	const [string, setString] = React.useState<any>('')
@@ -40,10 +42,7 @@ const Discover = () => {
 				{/* DISCOVER HERE */}
 				{/* w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 */}
 				<div className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12  ">
-					<div>
-						{/* height={350} width={400} */}
-						<Image src={image} alt="getImage" height={350} width={350} />
-					</div>
+					{image ? <Image src={image} alt="getImage" height={350} width={400} /> : <></>}
 					<h1 className="text-2xl py-3 font-Mont font-bold text-center">RENDER YOUR PARTICLE</h1>
 					<textarea
 						onChange={e => setString(e.target.value)}
