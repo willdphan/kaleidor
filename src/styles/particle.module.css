@@ -1,25 +1,36 @@
-@media only screen and (max-width: 480px) {
-	.random {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
+.particle {
+	position: relative;
+}
+
+@media (min-width: 0px) {
+	.particle {
+		left: 17.2rem;
+		top: -4.3rem;
+		width: 55rem;
 	}
 }
 
-formediumscreens: @media only screen and (min-width: 481px) and (max-width: 768px) {
-	.random {
-		position: absolute;
-		left: 25%;
-		top: 25%;
-		transform: translate(-25%, -25%);
+@media (min-width: 640px) {
+	.particle {
+		left: 25rem;
+		top: -1.4rem;
+		width: 80rem;
+		height: 80rem;
 	}
 }
-
-andforlargescreens: @media only screen and (min-width: 769px) {
-	.random {
-		position: absolute;
-		left: 0;
-		top: 0;
+@media (min-width: 768px) {
+	.particle {
+		left: 34.5rem;
+		top: -2rem;
+		width: 110rem;
+		height: 110rem;
+	}
+}
+@media (min-width: 1024px) {
+	.particle {
+		left: 53rem;
+		top: -3rem;
+		width: 170rem;
+		height: 170rem;
 	}
 }

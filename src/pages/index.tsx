@@ -28,8 +28,8 @@ const Home: FC = () => {
 
 				<RandomParticles />
 
-				<div className="absolute ">
-					<Image src={Kaleidor} alt="kaleidor" width={1000} height={1000} className="animate-spin-slow" />
+				<div className="fixed top-[26.5rem] w-[20rem] sm:w-[30rem] md:w-[40rem] lg:w-[60rem] ">
+					<Image src={Kaleidor} alt="kaleidor" width={1000} height={1000} className="animate-spin-slow " />
 				</div>
 			</div>
 		</div>

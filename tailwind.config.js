@@ -7,7 +7,7 @@ module.exports = {
 				Mont: ['Montserrat', 'sans-serif'],
 			},
 			animation: {
-				'spin-slow': 'spin 60s linear infinite',
+				'spin-slow': 'spin 15s linear infinite',
 			},
 		},
 	},
