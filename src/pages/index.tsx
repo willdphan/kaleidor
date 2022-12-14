@@ -5,6 +5,13 @@ import kaleidor from 'images/kaleidor.png'
 import logo from 'images/logo.gif'
 import discover from 'src/pages/discover'
 import { ethers } from 'ethers'
+import {
+	useSendTransaction,
+	usePrepareSendTransaction,
+	useContractWrite,
+	usePrepareContractWrite,
+	useAccount,
+} from 'wagmi'
 
 const Home: FC = () => {
 	return (

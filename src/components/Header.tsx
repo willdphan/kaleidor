@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
 
 	return (
 		<AppBar position="static" className="bg-black">
-			<Container maxWidth="xl" className="bg-black pt-3 ">
+			<Container maxWidth="xl" className="bg-black pt-3 " color="black">
 				<Toolbar disableGutters>
 					{/* MD WIDTH AND ABOVE */}
 					<Typography
@@ -54,7 +54,7 @@ function ResponsiveAppBar() {
 							fontFamily: 'monospace',
 							fontWeight: 700,
 							letterSpacing: '.3rem',
-							color: 'inherit',
+							color: 'black',
 							textDecoration: 'none',
 						}}
 					>

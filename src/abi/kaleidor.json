@@ -1,0 +1,144 @@
+[
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "_feeReceiver", "type": "address" },
+			{ "internalType": "uint256", "name": "_startTime", "type": "uint256" }
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{ "inputs": [], "name": "CreateFail", "type": "error" },
+	{ "inputs": [], "name": "InvalidProposal", "type": "error" },
+	{ "inputs": [], "name": "NoTokens", "type": "error" },
+	{ "inputs": [], "name": "NotAuthorized", "type": "error" },
+	{ "inputs": [], "name": "TimeNotElapsed", "type": "error" },
+	{
+		"inputs": [],
+		"name": "CADENCE",
+		"outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{ "internalType": "string", "name": "title", "type": "string" },
+					{ "internalType": "string", "name": "description", "type": "string" },
+					{ "internalType": "uint256", "name": "amount", "type": "uint256" }
+				],
+				"internalType": "struct Proposal",
+				"name": "_proposal",
+				"type": "tuple"
+			}
+		],
+		"name": "create",
+		"outputs": [{ "internalType": "bytes32", "name": "_proposalHash", "type": "bytes32" }],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentEvent",
+		"outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eventImplementation",
+		"outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "execute",
+		"outputs": [{ "internalType": "address", "name": "newEvent", "type": "address" }],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+		"name": "executed",
+		"outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+		"name": "lastVote",
+		"outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "nextEvent",
+		"outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "particle",
+		"outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+		"name": "proposalVotes",
+		"outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+		"name": "proposals",
+		"outputs": [
+			{ "internalType": "string", "name": "title", "type": "string" },
+			{ "internalType": "string", "name": "description", "type": "string" },
+			{ "internalType": "uint256", "name": "amount", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "topProposal",
+		"outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "address", "name": "_user", "type": "address" }],
+		"name": "transferUnvote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{ "inputs": [], "name": "unvote", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+	{
+		"inputs": [{ "internalType": "bytes32", "name": "_proposalHash", "type": "bytes32" }],
+		"name": "updateTop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+		"name": "userVote",
+		"outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [{ "internalType": "bytes32", "name": "_proposalHash", "type": "bytes32" }],
+		"name": "vote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{ "stateMutability": "payable", "type": "receive" }
+]
