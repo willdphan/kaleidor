@@ -1,0 +1,25 @@
+@media only screen and (max-width: 480px) {
+	.random {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+formediumscreens: @media only screen and (min-width: 481px) and (max-width: 768px) {
+	.random {
+		position: absolute;
+		left: 25%;
+		top: 25%;
+		transform: translate(-25%, -25%);
+	}
+}
+
+andforlargescreens: @media only screen and (min-width: 769px) {
+	.random {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+}
