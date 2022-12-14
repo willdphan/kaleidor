@@ -39,8 +39,8 @@ function ResponsiveAppBar() {
 	}
 
 	return (
-		<AppBar position="static" className="bg-black ">
-			<Container maxWidth="xl" className="bg-black pt-3">
+		<AppBar position="static" className="bg-black">
+			<Container maxWidth="xl" className="bg-black pt-3 ">
 				<Toolbar disableGutters>
 					{/* MD WIDTH AND ABOVE */}
 					<Typography
