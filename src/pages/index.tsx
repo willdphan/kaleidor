@@ -17,7 +17,7 @@ import RandomParticles from 'src/components/RandomParticles'
 
 const Home: FC = () => {
 	return (
-		<div className="bg-black max-h-screen overflow-hidden ">
+		<div className="bg-black max-h-screen overflow-hidden overflow-">
 			<div className="pt-48 flex items-center justify-center content-center ">
 				<a href={'/discover'}>
 					<Image src={logo} alt="Picture" width={150} height={150} />
@@ -27,8 +27,8 @@ const Home: FC = () => {
 				{/* width={1000} height={1000} */}
 
 				<RandomParticles />
-
-				<div className="fixed top-[26.5rem] w-[20rem] sm:w-[30rem] md:w-[40rem] lg:w-[60rem] ">
+				{/* top-[26.5rem] */}
+				<div className="absolute top-[4.8rem] w-[20rem] sm:w-[30rem] md:w-[40rem] lg:w-[60rem] ">
 					<Image src={Kaleidor} alt="kaleidor" width={1000} height={1000} className="animate-spin-slow " />
 				</div>
 			</div>
