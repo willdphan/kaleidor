@@ -93,10 +93,13 @@ const Discover = () => {
 						{isLoading ? 'MINTING...' : 'MINT ≈ 1.23 ETH'}
 					</button>
 					{isSuccess && (
-						<div>
-							Successfully minted your NFT!
+						<div
+							className="flex flex-col content-center text-center mt-2 space-y-0 font-Mont
+						"
+						>
+							<div className="mt-2">Successfully minted your NFT!</div>
 							<div>
-								<a href={`https://etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+								<a href={`https://etherscan.io/tx/${data?.hash}`}>Check on Etherscan!</a>
 							</div>
 						</div>
 					)}
