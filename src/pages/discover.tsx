@@ -38,6 +38,9 @@ const Discover = () => {
 		},
 	})
 
+	let gasLimit: any
+	gasLimit = { gasLimit: 123 }
+
 	const {
 		config,
 		error: prepareError,
@@ -54,7 +57,7 @@ const Discover = () => {
 			},
 		],
 		functionName: 'mint',
-		args: [string],
+		args: [string, { gasLimit: 28500000 }],
 		enabled: Boolean(string),
 	})
 	const { data, error, isError, write } = useContractWrite(config)
@@ -71,25 +74,21 @@ const Discover = () => {
 			<section className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-0 items-center justify-center content-center sm:space-x-10 ">
 				{/* DISCOVER HERE */}
 				{/* w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 */}
-				<form
-					onSubmit={e => {
-						e.preventDefault()
-						write?.()
-					}}
-					className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12  "
-				>
+				<div className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12  ">
 					{image ? <Image src={image} alt="getImage" height={380} width={400} /> : <></>}
 					<h1 className="text-2xl py-3 font-Mont font-bold text-center">RENDER YOUR PARTICLE</h1>
+
 					<textarea
 						onChange={e => setString(e.target.value)}
 						className=" pb-24 w-10/12 text-white bg-black mt-4 border-2 placeholder:italic text-wrap mb-5 rounded-xl font-Mont"
 						// value={collection}
 						placeholder="   ENTER SIGNAL..."
 					></textarea>
-					{/* <button className=" border-2 rounded-xl font-Mont font-bold py-3 w-10/12">MINT ≈ 1.23 ETH</button> */}
+
 					<button
+						onClick={() => write?.()}
 						className=" border-2 rounded-xl font-Mont font-bold py-3 w-10/12"
-						disabled={!write || isLoading}
+						// disabled={!write || isLoading}
 					>
 						{isLoading ? 'MINTING...' : 'MINT ≈ 1.23 ETH'}
 					</button>
@@ -101,8 +100,8 @@ const Discover = () => {
 							</div>
 						</div>
 					)}
-					{isError && <div>Error: {(prepareError || error)?.message}</div>}
-				</form>
+					{(isPrepareError || isError) && <div>Error: {(prepareError || error)?.message}</div>}
+				</div>
 				<div className="w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 xl:mt-[-5.5rem]  ">
 					<LineChart />
 				</div>
