@@ -20,8 +20,8 @@ import ReactIs from 'react-is'
 import RandomParticles from '@/components/RandomParticles'
 
 const Discover = () => {
-	const [string, setString] = React.useState < any > ''
-	const [image, setImage] = React.useState < any > ''
+	const [string, setString] = React.useState<any>('')
+	const [image, setImage] = React.useState<any>('')
 
 	const { address, isConnecting, isDisconnected } = useAccount()
 
@@ -53,7 +53,12 @@ const Discover = () => {
 			},
 		],
 		functionName: 'mint',
-		args: [string, { gasLimit: 28500000 }],
+		args: [string],
+		// args: [string, { gasLimit: 2000000, value: 2 }],
+		// overrides: {
+		// 	from: address,
+		// 	value: ethers.utils.parseEther('0.04'),
+		// },
 		enabled: Boolean(string),
 	})
 	const { data, error, isError, write } = useContractWrite(config)
