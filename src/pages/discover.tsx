@@ -38,9 +38,6 @@ const Discover = () => {
 		},
 	})
 
-	let gasLimit: any
-	gasLimit = { gasLimit: 123 }
-
 	const {
 		config,
 		error: prepareError,
