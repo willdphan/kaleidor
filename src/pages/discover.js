@@ -18,7 +18,6 @@ import React from 'react'
 import abi from 'src/abi/particle.json'
 import ReactIs from 'react-is'
 import RandomParticles from '@/components/RandomParticles'
-import { write } from 'fs'
 
 const Discover = () => {
 	const [string, setString] = React.useState < any > ''
