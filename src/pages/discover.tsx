@@ -26,7 +26,7 @@ const Discover = () => {
 	const { address, isConnecting, isDisconnected } = useAccount()
 
 	const getImage = useContractRead({
-		address: '0x7b076ddBA57042d3021A2d529531497580937250',
+		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
 		abi: abi,
 		functionName: 'getImage',
 		args: [string],
@@ -42,7 +42,7 @@ const Discover = () => {
 		error: prepareError,
 		isError: isPrepareError,
 	} = usePrepareContractWrite({
-		address: '0x7b076ddBA57042d3021A2d529531497580937250',
+		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
 		abi: [
 			{
 				inputs: [{ internalType: 'string', name: '_signal', type: 'string' }],
@@ -100,11 +100,17 @@ const Discover = () => {
 						>
 							<div className="mt-2">Successfully minted your NFT!</div>
 							<div>
-								<a href={`https://etherscan.io/tx/${data?.hash}`}>Check on Etherscan!</a>
+								{/* CHANGE LINK TO MAINNET LATER */}
+								<a
+									className="decoration underline"
+									href={`https://goerli.etherscan.io/tx/${data?.hash}`}
+								>
+									View on Etherscan!
+								</a>
 							</div>
 						</div>
 					)}
-					{(isPrepareError || isError) && <div>Error: {(prepareError || error)?.message}</div>}
+					{(isPrepareError || isError) && <div>{(prepareError || error)?.message}</div>}
 				</div>
 				<div className="w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 xl:mt-[-5.5rem]  ">
 					<LineChart />
