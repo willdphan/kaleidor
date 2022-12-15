@@ -21,8 +21,8 @@ import RandomParticles from '@/components/RandomParticles'
 import { write } from 'fs'
 
 const Discover = () => {
-	const [string, setString] = React.useState<any>('')
-	const [image, setImage] = React.useState<any>('')
+	const [string, setString] = React.useState < any > ''
+	const [image, setImage] = React.useState < any > ''
 
 	const { address, isConnecting, isDisconnected } = useAccount()
 
