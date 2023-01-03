@@ -39,150 +39,40 @@ function ResponsiveAppBar() {
 	}
 
 	return (
-		<AppBar position="static" className="bg-black">
-			<Container maxWidth="xl" className="bg-black pt-3 " color="black">
-				<Toolbar disableGutters>
-					{/* MD WIDTH AND ABOVE */}
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: 'none', md: 'flex' },
-							fontFamily: 'monospace',
-							fontWeight: 700,
-							letterSpacing: '.3rem',
-							color: 'black',
-							textDecoration: 'none',
-						}}
-					>
-						<Link href={'/'}>
-							<Image src={headerlogo} alt="Picture" width={90} height={80} />
-						</Link>
-					</Typography>
+		<header aria-label="Site Header" className="bg-opacity-0	">
+			<div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+				<a className="block pt-2">
+					<span className="sr-only">Home</span>
+					<Link href="/">
+						<Image width={80} height={80} src={headerlogo} alt="logo" className="cursor-pointer" />
+					</Link>
+				</a>
 
-					{/* MD WIDTH AND BELOW */}
-					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-						{/* MENU ICON */}
-						<IconButton
-							className="scale-150 "
-							// size="large"
-							aria-label="account of current user"
-							aria-controls="menu-appbar"
-							aria-haspopup="true"
-							onClick={handleOpenNavMenu}
-							color="inherit"
-						>
-							<MenuIcon />
-						</IconButton>
-						{/* MENU OPEN/CLOSE */}
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'left',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: 'block', md: 'none' },
-							}}
-						>
-							{/* MENU ITEMS */}
-							<Link href={'/discover'}>
-								<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
-									DISCOVER
-								</MenuItem>
-							</Link>
-							<Link href={'/govern'}>
-								<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
-									GOVERN
-								</MenuItem>
-							</Link>
-							<Link href={'/build'}>
-								<MenuItem
-									href={'/build'}
-									className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium"
-								>
-									BUILD
-								</MenuItem>
-							</Link>
-							<Link href={'/learn'}>
-								<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
-									LEARN
-								</MenuItem>
-							</Link>
-							{/* {pages.map(page => (
-								<MenuItem
-									key={page}
-									onClick={handleCloseNavMenu}
-									className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-2xl font-medium"
-								>
-									<Typography textAlign="center">{page}</Typography>
-								</MenuItem>
-							))} */}
-						</Menu>
-					</Box>
-					<Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							mr: 2,
-							display: { xs: 'flex', md: 'none' },
-							flexGrow: 1,
-							fontFamily: 'monospace',
-							fontWeight: 700,
-							letterSpacing: '.3rem',
-							color: 'inherit',
-							textDecoration: 'none',
-						}}
-					>
-						<Link href={'/'}>
-							<Image src={headerlogo} alt="Picture" width={100} height={100} />
-						</Link>
-					</Typography>
+				<div className="flex flex-1 items-center justify-end md:justify-between">
+					<nav aria-label="Site Nav" className="hidden md:block">
+						<ul className="flex items-center gap-20 font-Syne text-xl font-Mont font-semibold">
+							<li>
+								<a className=" transition hover:text-gray-500/75  text-white pl-10">DISCOVER</a>
+							</li>
+							<li>
+								<a className=" transition hover:text-gray-500/75  text-white ">BUILD</a>
+							</li>
+							<li>
+								<a className=" transition hover:text-gray-500/75  text-white ">GOVERN</a>
+							</li>
+							<li>
+								<a className=" transition hover:text-gray-500/75  text-white ">LEARN</a>
+							</li>
+						</ul>
+					</nav>
 
-					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						<Link href={'/discover'}>
-							<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
-								DISCOVER
-							</MenuItem>
-						</Link>
-						<Link href={'/govern'}>
-							<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
-								GOVERN
-							</MenuItem>
-						</Link>
-						<Link href={'/build'}>
-							<MenuItem
-								href={'/build'}
-								className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium"
-							>
-								BUILD
-							</MenuItem>
-						</Link>
-						<Link href={'/learn'}>
-							<MenuItem className=" bg-black text-white font-Mont hover:bg-white hover:text-black text-lg font-medium">
-								LEARN
-							</MenuItem>
-						</Link>
-					</Box>
-					<div className="">
+					<div className="flex items-center gap-4">
 						<ConnectWallet />
 					</div>
-				</Toolbar>
-			</Container>
-		</AppBar>
+				</div>
+			</div>
+		</header>
 	)
 }
+
 export default ResponsiveAppBar

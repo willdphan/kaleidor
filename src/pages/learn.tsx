@@ -16,10 +16,10 @@ import React from 'react'
 const learn = () => {
 	return (
 		<>
-			<div>
-				<Header />
-			</div>
 			<div className="bg-black min-h-screen overflow-hidden flex flex-col items-center justify-center content-center pt-10 ">
+				<div className="absolute w-full top-3">
+					<Header />
+				</div>
 				<section className="flex flex-col items-start w-10/12 sm:max-w-lg md:max-w-xl lg:max-w-2xl space-y-10">
 					<h1 className="font-Mont text-4xl">
 						REFRACTORED, <br /> REFLECTED ARCHITECTURE.

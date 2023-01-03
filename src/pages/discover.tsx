@@ -54,11 +54,7 @@ const Discover = () => {
 		],
 		functionName: 'mint',
 		args: [string],
-		// args: [string, { gasLimit: 2000000, value: 2 }],
-		// overrides: {
-		// 	from: address,
-		// 	value: ethers.utils.parseEther('0.04'),
-		// },
+
 		enabled: Boolean(string),
 	})
 	const { data, error, isError, write } = useContractWrite(config)
@@ -69,10 +65,10 @@ const Discover = () => {
 
 	return (
 		<>
-			<div>
-				<Header />
-			</div>
-			<section className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-0 items-center justify-center content-center sm:space-x-10 ">
+			<section className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-32 items-center justify-center content-center sm:space-x-10 ">
+				<div className="absolute w-full top-3">
+					<Header />
+				</div>
 				{/* DISCOVER HERE */}
 				{/* w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 */}
 				<div className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12  ">
