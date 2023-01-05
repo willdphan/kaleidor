@@ -51,18 +51,34 @@ function ResponsiveAppBar() {
 				<div className="flex flex-1 items-center justify-end md:justify-between">
 					<nav aria-label="Site Nav" className="hidden md:block">
 						<ul className="flex items-center gap-20 font-Syne text-xl font-Mont font-semibold">
-							<li>
-								<a className=" transition hover:text-gray-500/75  text-white pl-10">DISCOVER</a>
-							</li>
-							<li>
-								<a className=" transition hover:text-gray-500/75  text-white ">BUILD</a>
-							</li>
-							<li>
-								<a className=" transition hover:text-gray-500/75  text-white ">GOVERN</a>
-							</li>
-							<li>
-								<a className=" transition hover:text-gray-500/75  text-white ">LEARN</a>
-							</li>
+							<Link href="/discover">
+								<li>
+									<a className=" transition hover:text-gray-500/75  text-white pl-10 cursor-pointer">
+										DISCOVER
+									</a>
+								</li>
+							</Link>
+							<Link href="/build">
+								<li>
+									<a className=" transition hover:text-gray-500/75  text-white pl-10 cursor-pointer">
+										BUILD
+									</a>
+								</li>
+							</Link>
+							<Link href="/govern">
+								<li>
+									<a className=" transition hover:text-gray-500/75  text-white pl-10 cursor-pointer">
+										GOVERN
+									</a>
+								</li>
+							</Link>
+							<Link href="/learn">
+								<li>
+									<a className=" transition hover:text-gray-500/75  text-white pl-10 cursor-pointer">
+										LEARN
+									</a>
+								</li>
+							</Link>
 						</ul>
 					</nav>
 

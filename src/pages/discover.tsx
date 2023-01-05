@@ -11,19 +11,101 @@ import {
 	useAccount,
 	useContractRead,
 	useWaitForTransaction,
+	useBlockNumber,
 } from 'wagmi'
 import { ethers } from 'ethers'
 import LineChart from 'src/components/Charts/LineChart.js'
 import React from 'react'
 import abi from 'src/abi/particle.json'
-import ReactIs from 'react-is'
-import RandomParticles from '@/components/RandomParticles'
 
 const Discover = () => {
 	const [string, setString] = React.useState<any>('')
 	const [image, setImage] = React.useState<any>('')
 
 	const { address, isConnecting, isDisconnected } = useAccount()
+
+	const [totalSold, setTotalSold] = React.useState<any>('')
+	const [timeSinceStart, setTimeSinceStart] = React.useState<any>('')
+	const [VRGDA, setVRGDA] = React.useState<any>('')
+	const [startTime, setStartTime] = React.useState<any>('')
+
+	/////////////////////////
+	////// START TIME ///////
+	/////////////////////////
+
+	const getStartTime = useContractRead({
+		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
+		abi: abi,
+		functionName: 'startTime',
+
+		onSuccess(data) {
+			setStartTime(data)
+			console.log('Start', data)
+		},
+	})
+
+	///////////////////////////////
+	////// TIME SINCE START ///////
+	///////////////////////////////
+
+	// Calculate the time that has passed since the startTimestamp
+	const { ethers } = require('ethers')
+
+	// Get the timestamp of the latest block
+	const { data: currentTimestamp } = useBlockNumber()
+
+	const getTimeSinceStart = React.useMemo(() => {
+		if (currentTimestamp !== undefined) {
+			const timesince = currentTimestamp - startTime
+			setTimeSinceStart(timesince)
+			console.log(timesince)
+		}
+	}, [currentTimestamp, startTime])
+
+	// Make sure currentTimestamp is defined before using it
+	// if (currentTimestamp !== undefined) {
+	// 	// Calculate the time that has passed since the startTimestamp
+	// 	const timeSinceStart = currentTimestamp - startTime
+	// 	setTimeSinceStart(timeSinceStart)
+	// 	console.log('Time Since Start', timeSinceStart)
+	// }
+
+	/////////////////////////
+	////// TOTAL SOLD ///////
+	/////////////////////////
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const getTotalSold = useContractRead({
+		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
+		abi: abi,
+		functionName: 'totalSold',
+
+		onSuccess(data) {
+			setTotalSold(data)
+			console.log('Total', data)
+		},
+	})
+
+	/////////////////////////
+	////// VRGDA PRICE //////
+	/////////////////////////
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const getVRGDAPrice = useContractRead({
+		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
+		abi: abi,
+		functionName: 'getVRGDAPrice',
+		args: [timeSinceStart, totalSold],
+
+		onSuccess(data) {
+			setVRGDA(data)
+			console.log('Price', data)
+		},
+	})
+
+	//////////////////////
+	////// NFT IMAGE /////
+	//////////////////////
 
 	const getImage = useContractRead({
 		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
@@ -36,6 +118,10 @@ const Discover = () => {
 			console.log('Success', data)
 		},
 	})
+
+	//////////////////////
+	////// MINT NFT //////
+	//////////////////////
 
 	const {
 		config,
@@ -62,6 +148,24 @@ const Discover = () => {
 	const { isLoading, isSuccess } = useWaitForTransaction({
 		hash: data?.hash,
 	})
+
+	// useEffect(() => {
+	// 	if (getStartTime) {
+	// 		console.error(startTime)
+	// 	}
+	// 	if (timeSinceStart) {
+	// 		console.error(timeSinceStart)
+	// 	}
+	// 	if (getTotalSold) {
+	// 		console.error(totalSold)
+	// 	}
+	// 	if (getVRGDAPrice) {
+	// 		console.error(VRGDA)
+	// 	}
+	// 	if (getTotalSold) {
+	// 		console.error(totalSold)
+	// 	}
+	// }, [VRGDA, getStartTime, getTotalSold, getVRGDAPrice, startTime, timeSinceStart, totalSold])
 
 	return (
 		<>
