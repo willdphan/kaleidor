@@ -3,7 +3,7 @@
 import React from 'react'
 import Chart from 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
 	useSendTransaction,
 	usePrepareSendTransaction,
@@ -15,48 +15,8 @@ import {
 } from 'wagmi'
 import abi from 'src/abi/particle.json'
 const { ethers } = require('ethers')
-
-const BuildChart = () => {
-	const [totalSold, setTotalSold] = useState()
-	const [VRGDA, setVRGDA] = useState()
-	const [image, setImage] = React.useState < any > ''
-
-	/// GET TIME PASSED
-	// Calculate the time that has passed since the startTimestamp
-	async function getTimeSinceStart(startTimestamp) {
-		// Get the current block timestamp
-		const currentTimestamp = (await ethers.provider.getBlock('latest')).timestamp
-		// Calculate the time that has passed since the startTimestamp
-		return currentTimestamp - startTimestamp
-	}
-
-	/// GET TOTAL SOLD
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const getTotalSold = useContractRead({
-		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
-		abi: abi,
-		functionName: 'totalSold',
-
-		onSuccess(data) {
-			setTotalSold(data)
-			console.log('Success', data)
-		},
-	})
-
-	/// USE TIME PASSED AND TOTAL SOLD TO GET VRGDA PRICE
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const getVRGDAPrice = useContractRead({
-		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
-		abi: abi,
-		functionName: 'getVRGDAPrice',
-		args: [string],
-
-		onSuccess(data) {
-			setVRGDA(data)
-			console.log('Success', data)
-		},
-	})
-}
+import { getStartTimestamp, getTimeSinceStart, getTotalSold, getVRGDA } from 'src/pages/discover.tsx'
+import { useBlockNumber } from 'wagmi'
 const LineChart = () => {
 	const data = {
 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

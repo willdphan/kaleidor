@@ -13,7 +13,7 @@ import {
 	useWaitForTransaction,
 	useBlockNumber,
 } from 'wagmi'
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import LineChart from 'src/components/Charts/LineChart.js'
 import React from 'react'
 import abi from 'src/abi/particle.json'
@@ -33,14 +33,14 @@ const Discover = () => {
 	////// START TIME ///////
 	/////////////////////////
 
-	const getStartTime = useContractRead({
+	const { data: getStartTimestamp } = useContractRead({
 		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
 		abi: abi,
 		functionName: 'startTime',
 
-		onSuccess(data) {
-			setStartTime(data)
-			console.log('Start', data)
+		onSuccess(getStartTimestamp) {
+			setStartTime(getStartTimestamp)
+			console.log('Start Timestamp', getStartTimestamp.toString())
 		},
 	})
 
@@ -58,31 +58,21 @@ const Discover = () => {
 		if (currentTimestamp !== undefined) {
 			const timesince = currentTimestamp - startTime
 			setTimeSinceStart(timesince)
-			console.log(timesince)
+			console.log('Time Since Start', timesince)
 		}
 	}, [currentTimestamp, startTime])
-
-	// Make sure currentTimestamp is defined before using it
-	// if (currentTimestamp !== undefined) {
-	// 	// Calculate the time that has passed since the startTimestamp
-	// 	const timeSinceStart = currentTimestamp - startTime
-	// 	setTimeSinceStart(timeSinceStart)
-	// 	console.log('Time Since Start', timeSinceStart)
-	// }
 
 	/////////////////////////
 	////// TOTAL SOLD ///////
 	/////////////////////////
 
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const getTotalSold = useContractRead({
+	const { data: getTotalSold } = useContractRead({
 		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
 		abi: abi,
 		functionName: 'totalSold',
-
-		onSuccess(data) {
-			setTotalSold(data)
-			console.log('Total', data)
+		onSuccess(getTotalSold) {
+			setTotalSold(getTotalSold)
+			console.log('Total NFTs Minted', getTotalSold.toString())
 		},
 	})
 
@@ -91,15 +81,16 @@ const Discover = () => {
 	/////////////////////////
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const getVRGDAPrice = useContractRead({
+	const { data: getVRGDA } = useContractRead({
 		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
 		abi: abi,
 		functionName: 'getVRGDAPrice',
 		args: [timeSinceStart, totalSold],
 
-		onSuccess(data) {
-			setVRGDA(data)
-			console.log('Price', data)
+		onSuccess(getVRGDA) {
+			const etherAmount = utils.formatEther(getVRGDA.toString())
+			setVRGDA(etherAmount)
+			console.log('VRGDA Price', etherAmount.toString())
 		},
 	})
 
@@ -115,7 +106,7 @@ const Discover = () => {
 
 		onSuccess(data) {
 			setImage(data)
-			console.log('Success', data)
+			console.log('Image SVG', data)
 		},
 	})
 
