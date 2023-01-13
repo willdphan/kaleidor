@@ -45,7 +45,7 @@ const Build = () => {
 				<CurrentEvent />
 
 				<section className="flex flex-col text-center w-10/12 sm:w-8/12 md:w-5/12 lg:w-5/12 xl:w-4/12 space-y-5 ">
-					<h1 className="text-2xl font-bold">SUBMIT SOLUTION</h1>
+					<h1 className="text-2xl font-Mont font-semibold">SUBMIT SOLUTION</h1>
 					<input
 						onChange={e => setTitle(e.target.value)}
 						type="text"
@@ -54,7 +54,7 @@ const Build = () => {
 					/>
 					<textarea
 						onChange={e => setDescription(e.target.value)}
-						className="pb-64 text-white bg-black border-2 placeholder:italic placeholder:pt-2 placeholder:pl-2 text-wrap mb-5 rounded-xl font-Mont w-full"
+						className="pb-[9.5rem] text-white bg-black border-2 placeholder:italic placeholder:pt-2 placeholder:pl-2 text-wrap mb-5 rounded-xl font-Mont w-full"
 						// value={collection}
 						placeholder="   DESCRIPTION..."
 					/>

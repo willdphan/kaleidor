@@ -140,24 +140,6 @@ const Discover = () => {
 		hash: data?.hash,
 	})
 
-	// useEffect(() => {
-	// 	if (getStartTime) {
-	// 		console.error(startTime)
-	// 	}
-	// 	if (timeSinceStart) {
-	// 		console.error(timeSinceStart)
-	// 	}
-	// 	if (getTotalSold) {
-	// 		console.error(totalSold)
-	// 	}
-	// 	if (getVRGDAPrice) {
-	// 		console.error(VRGDA)
-	// 	}
-	// 	if (getTotalSold) {
-	// 		console.error(totalSold)
-	// 	}
-	// }, [VRGDA, getStartTime, getTotalSold, getVRGDAPrice, startTime, timeSinceStart, totalSold])
-
 	return (
 		<>
 			<section className="bg-black min-h-screen overflow-hidden flex flex-col pt-24 sm:flex-row sm:pt-32 items-center justify-center content-center sm:space-x-10 ">
@@ -166,9 +148,9 @@ const Discover = () => {
 				</div>
 				{/* DISCOVER HERE */}
 				{/* w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 */}
-				<div className="flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12  ">
+				<div className="pt-18 flex flex-col items-center justify-center mb-28 w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12  ">
 					{image ? <Image src={image} alt="getImage" height={380} width={400} /> : <></>}
-					<h1 className="text-2xl py-3 font-Mont font-bold text-center">RENDER YOUR PARTICLE</h1>
+					<h1 className="text-2xl py-3 font-Mont font-semibold text-center">RENDER YOUR PARTICLE</h1>
 
 					<textarea
 						onChange={e => setString(e.target.value)}
@@ -202,9 +184,6 @@ const Discover = () => {
 						</div>
 					)}
 					{(isPrepareError || isError) && <div>{(prepareError || error)?.message}</div>}
-				</div>
-				<div className="w-10/12 sm:w-5/12 md:w-4/12 lg:w-5/12 xl:w-4/12 xl:mt-[-5.5rem]  ">
-					<LineChart />
 				</div>
 			</section>
 		</>

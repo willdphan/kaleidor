@@ -17,6 +17,7 @@ import abi from 'src/abi/particle.json'
 const { ethers } = require('ethers')
 import { getStartTimestamp, getTimeSinceStart, getTotalSold, getVRGDA } from 'src/pages/discover.tsx'
 import { useBlockNumber } from 'wagmi'
+
 const LineChart = () => {
 	const data = {
 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
