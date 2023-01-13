@@ -14,7 +14,6 @@ import {
 	useBlockNumber,
 } from 'wagmi'
 import { ethers, utils } from 'ethers'
-import LineChart from 'src/components/Charts/LineChart.js'
 import React from 'react'
 import abi from 'src/abi/particle.json'
 
@@ -40,6 +39,7 @@ const Discover = () => {
 
 		onSuccess(getStartTimestamp) {
 			setStartTime(getStartTimestamp)
+			// @ts-ignore
 			console.log('Start Timestamp', getStartTimestamp.toString())
 		},
 	})
@@ -72,6 +72,7 @@ const Discover = () => {
 		functionName: 'totalSold',
 		onSuccess(getTotalSold) {
 			setTotalSold(getTotalSold)
+			// @ts-ignore
 			console.log('Total NFTs Minted', getTotalSold.toString())
 		},
 	})
@@ -81,14 +82,14 @@ const Discover = () => {
 	/////////////////////////
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const { data: getVRGDA } = useContractRead({
+	const { data: targetPrice } = useContractRead({
 		address: '0x4e5E8D702b4c617AF24b366e6c81d15aAB4c010A',
 		abi: abi,
-		functionName: 'getVRGDAPrice',
-		args: [timeSinceStart, totalSold],
+		functionName: 'targetPrice',
 
-		onSuccess(getVRGDA) {
-			const etherAmount = utils.formatEther(getVRGDA.toString())
+		onSuccess(targetPrice) {
+			// @ts-ignore
+			const etherAmount = utils.formatEther(targetPrice.toString())
 			setVRGDA(etherAmount)
 			console.log('VRGDA Price', etherAmount.toString())
 		},
@@ -164,7 +165,7 @@ const Discover = () => {
 						className=" border-2 rounded-xl font-Mont font-bold py-3 w-10/12"
 						// disabled={!write || isLoading}
 					>
-						{isLoading ? 'MINTING...' : 'MINT ≈ 1.23 ETH'}
+						{isLoading ? 'MINTING...' : 'MINT'} ≈ {VRGDA} ETH
 					</button>
 					{isSuccess && (
 						<div
